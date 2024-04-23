@@ -11,8 +11,11 @@
     "lint": "eslint src --ext .jsx,.js,.tsx,.ts  --no-error-on-unmatched-pattern --fix && stylelint --fix src/{,*/}*.{scss,css} --allow-empty-input"
   },
   "dependencies": {
+    "@types/uuid": "^9.0.8",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-content-loader": "^7.0.0",
+    "react-dom": "^18.2.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@it-incubator/eslint-config": "^1.0.2",
@@ -27,6 +30,11 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.45.4",
+    "react-redux": "^8.1.2",
+    "react-router-dom": "^6.22.3",
     "sass": "^1.75.0",
     "stylelint": "^16.3.1",
     "typescript": "^5.2.2",

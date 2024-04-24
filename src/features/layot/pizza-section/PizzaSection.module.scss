@@ -1,0 +1,75 @@
+@import '@/common/styles/variables';
+
+.pizza__section {
+  width: $container-width;
+  margin: 0 auto;
+
+  .content__title {
+    font-size: 38px;
+    font-weight: 800;
+  }
+
+  .content__items {
+    display: flex;
+    flex-basis: 280px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    margin-top: 30px;
+    padding-top: 30px;
+  }
+
+  @media (width <= 1033px) {
+    .content__items {
+      gap: 50px;
+      justify-content: center;
+      margin-top: 0;
+    }
+
+    .content__title {
+      text-align: center;
+    }
+
+    /*
+    &__item {
+      display: flex;
+
+      width: 100%;
+      margin-top: 30px;
+      padding-top: 30px;
+
+      border-top: 1px solid $gray-line;
+
+      &-img {
+        display: flex;
+        align-items: center;
+        width: 10%;
+        margin-right: 15px;
+
+        img {
+          width: 80px;
+          height: 80px;
+        }
+      }
+
+      &-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 40%;
+
+        h3 {
+          font-size: 22px;
+          font-weight: bold;
+          line-height: 27px;
+          letter-spacing: 0.01em;
+        }
+
+        p {
+          font-size: 18px;
+          color: #8d8d8d;
+        }
+      }
+    } */
+  }
+}

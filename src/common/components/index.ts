@@ -1,0 +1,6 @@
+export * from './categories/Categories'
+export * from './categories/Categories.module.scss'
+export * from './pizza-block/PizzaBlock'
+export * from './pizza-block/PizzaBlock.module.scss'
+export * from './sort/Sort'
+export * from './sort/Sort.module.scss'

@@ -1,0 +1,16 @@
+.sortBlock {
+  display: flex;
+  gap: 50px;
+  justify-content: flex-start;
+  padding: 40px;
+
+  @media (width <= 1408px) {
+    flex-direction: column-reverse;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}

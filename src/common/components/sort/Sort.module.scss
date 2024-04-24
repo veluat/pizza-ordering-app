@@ -1,0 +1,65 @@
+@import '@/common/styles/variables';
+
+.sort {
+  position: relative;
+
+  .sort__label {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    .image {
+      transform: rotate(180deg);
+      margin-right: 8px;
+    }
+
+    .rotated {
+      transform: rotate(0);
+    }
+
+    span {
+      cursor: pointer;
+      font-weight: bold;
+      color: $black;
+      border-bottom: 1px dashed $black;
+    }
+
+    @media (width <= 368px) {
+      flex-direction: column;
+    }
+  }
+
+  .sort__popup {
+    position: absolute;
+    right: 0;
+
+    overflow: hidden;
+
+    width: 160px;
+    margin-top: 15px;
+    padding: 10px 0;
+
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgb(0 0 0 / 9%);
+
+    ul {
+      overflow: hidden;
+
+      li {
+        cursor: pointer;
+        padding: 12px 20px;
+
+        &.active,
+        &:hover {
+          background: rgb(254 95 30 / 5%);
+        }
+
+        &.active {
+          font-weight: bold;
+          color: $black;
+        }
+      }
+    }
+  }
+}

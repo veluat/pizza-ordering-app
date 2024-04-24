@@ -1,0 +1,141 @@
+@import '@/common/styles/variables';
+
+.pizza__block {
+  display: flex;
+  flex-basis: 280px;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+
+  margin-bottom: 40px;
+  padding: 5px;
+
+  border-radius: 10px;
+  box-shadow:
+    2px 2px 15px $gray-line,
+    -2px -2px 15px $gray-line;
+
+  .pizzaBlock__image {
+    width: 260px;
+  }
+
+  .pizzaBlock__title {
+    font-size: 20px;
+    font-weight: 900;
+  }
+
+  .pizzaBlock__selector {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 280px;
+    padding: 6px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    ul {
+      display: flex;
+      flex: 1;
+
+      &:first-of-type {
+        margin-bottom: 6px;
+      }
+
+      li {
+        cursor: pointer;
+
+        flex: 1;
+
+        padding: 8px;
+
+        font-size: 14px;
+        font-weight: 600;
+
+        border: 1px solid $orange;
+        border-radius: 5px;
+      }
+
+      .active {
+        cursor: auto;
+        background: $gray-line;
+        border-radius: 5px;
+      }
+
+      .disabled {
+        pointer-events: none;
+        opacity: 0.4;
+      }
+    }
+  }
+
+  .pizzaBlock__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: 280px;
+    padding: 20px 10px;
+
+    .pizzaBlock__price {
+      display: inline-block;
+      font-size: 22px;
+      font-weight: bold;
+      line-height: 27px;
+    }
+
+    .pizzaBlock__button {
+      cursor: pointer;
+
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      max-width: 160px;
+      padding: 10px 20px;
+
+      font-weight: bold;
+      color: $black;
+      text-align: center;
+
+      background-color: #fff;
+      border: 2px solid $black;
+      border-radius: 30px;
+
+      transition: background-color 0.1s ease-in-out;
+
+      &:hover {
+        background-color: $gray-line;
+      }
+
+      &:active {
+        background-color: $gray-line;
+        border: 1px solid $gray-line;
+      }
+
+      &.active {
+        color: #fff;
+        background-color: $gray-line;
+        border: 1px solid $gray-line;
+      }
+    }
+  }
+
+  @media (width <= 1090px) {
+    margin-bottom: 35px;
+  }
+
+  @media (width <= 768px) {
+    &:not(:last-of-type) {
+      margin-bottom: 25px;
+      padding-bottom: 45px;
+      border-bottom: 1px solid #efefef;
+    }
+  }
+}

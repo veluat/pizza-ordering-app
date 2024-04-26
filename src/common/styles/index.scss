@@ -17,6 +17,10 @@ html {
 
 body {
   background-color: $background;
+  background-image: url('./../../assets/converted.svg');
+  background-repeat: space;
+  background-position: left;
+  background-size: 25vw;
 
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;

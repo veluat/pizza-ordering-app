@@ -13,8 +13,9 @@ export const Header: React.FC = () => {
         <div className={s.logo}>
           <img alt={'Pizza logo'} height={'50'} src={logo} width={'50'} />
           <div>
+            <p>на любой вкус и цвет</p>
             <h1>Pizza-ordering</h1>
-            <p>на любой вкус и цвет лучше пиццы нет</p>
+            <p>лучше нашей пиццы нет</p>
           </div>
         </div>
         <div className={s.search}>

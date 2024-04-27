@@ -5,12 +5,18 @@ import { idGenerator } from '@/common/utils/idGenerator'
 
 import s from './Sort.module.scss'
 
-export const Sort: React.FC = () => {
+export const Sort: React.FC<SortListType> = ({ onChangeSortType, value }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const sortList = ['популярности', 'цене', 'алфавиту']
-  const [selected, setSelected] = useState(0)
-  const listItemHandler = (i: React.SetStateAction<number>) => {
-    setSelected(i)
+  const sortList = [
+    { name: 'популярности', sortProperty: 'rating' },
+    { name: 'цене (сначала дешевле)', sortProperty: '-price' },
+    { name: 'цене (сначала дороже)', sortProperty: 'price' },
+    { name: 'алфавиту (от А до Я)', sortProperty: '-title' },
+    { name: 'алфавиту (от Я до А)', sortProperty: 'title' },
+  ]
+
+  const listItemHandler = (obj: { name: string; sortProperty: string }) => {
+    onChangeSortType(obj)
     setIsOpen(false)
   }
 
@@ -27,18 +33,18 @@ export const Sort: React.FC = () => {
           />
           <b>Сортировка по:</b>
         </div>
-        <span onClick={() => setIsOpen(!isOpen)}>{sortList[selected]}</span>
+        <span onClick={() => setIsOpen(!isOpen)}>{value.name}</span>
       </div>
       {isOpen && (
         <div className={s.sort__popup}>
           <ul>
-            {sortList.map((name, i) => (
+            {sortList.map(obj => (
               <li
-                className={selected === i ? `${s.active}` : ''}
+                className={value.sortProperty === obj.sortProperty ? `${s.active}` : ''}
                 key={idGenerator()}
-                onClick={() => listItemHandler(i)}
+                onClick={() => listItemHandler(obj)}
               >
-                {name}
+                {obj.name}
               </li>
             ))}
           </ul>
@@ -46,4 +52,8 @@ export const Sort: React.FC = () => {
       )}
     </div>
   )
+}
+export type SortListType = {
+  onChangeSortType: (i: { name: string; sortProperty: string }) => void
+  value: { name: string; sortProperty: string }
 }

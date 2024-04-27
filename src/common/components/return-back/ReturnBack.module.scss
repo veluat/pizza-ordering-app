@@ -1,0 +1,6 @@
+@import '@/common/styles/variables';
+@import '@/common/styles/mixin';
+
+.returnBack {
+  @include ordinary-btn;
+}

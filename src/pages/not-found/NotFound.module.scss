@@ -1,0 +1,18 @@
+.notFoundBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+
+  width: 100%;
+  max-width: 1440px;
+  padding: 100px;
+
+  span {
+    font-size: 64px;
+  }
+
+  .description {
+    font-size: 22px;
+  }
+}

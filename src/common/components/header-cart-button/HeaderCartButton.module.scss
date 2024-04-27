@@ -1,0 +1,42 @@
+@import '@/common/styles/variables';
+
+.header__cart {
+  cursor: pointer;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 200px;
+  padding: 13px 20px;
+
+  background-color: $black;
+  border-radius: 30px;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 11px;
+    right: 40%;
+
+    height: 35px;
+
+    border-right: 1px solid white;
+  }
+
+  span {
+    font-size: 20px;
+    color: white;
+  }
+
+  .button__cart {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+  }
+}

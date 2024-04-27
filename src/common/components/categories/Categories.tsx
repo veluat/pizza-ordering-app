@@ -1,27 +1,25 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { idGenerator } from '@/common/utils/idGenerator'
 
 import s from '../categories/Categories.module.scss'
 
-export const Categories: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState(0)
-  const categories = ['Все', 'Гавайская', 'Вегетарианская', 'Барбекю', 'Острая чили', 'Четыре сыра']
-
-  const onClickCategory = (index: React.SetStateAction<number>) => {
-    setActiveCategory(index)
-  }
+export const Categories: React.FC<{ onChangeCategory: (i: number) => void; value: number }> = ({
+  onChangeCategory,
+  value,
+}) => {
+  const categories = ['Все', 'Мясные', 'Вегетарианские', 'Барбекю', 'Острые', 'Сырные']
 
   return (
     <div className={s.categories}>
       <ul>
-        {categories.map((category, index) => (
+        {categories.map((categoryName, i) => (
           <li
-            className={activeCategory === index ? `${s.active}` : ''}
+            className={value === i ? `${s.active}` : ''}
             key={idGenerator()}
-            onClick={() => onClickCategory(index)}
+            onClick={() => onChangeCategory(i)}
           >
-            {category}
+            {categoryName}
           </li>
         ))}
       </ul>

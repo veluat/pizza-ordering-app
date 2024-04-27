@@ -1,0 +1,66 @@
+@import '@/common/styles/variables';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 1440px;
+  padding: 40px;
+
+  border-top: 2px solid $gray-line;
+
+  .logoBlock {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+      justify-content: center;
+
+      @media screen and (width <= 1200px) {
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    .call {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+
+      margin-right: 20px;
+
+      p {
+        font-weight: bold;
+      }
+    }
+
+    @media screen and (width <= 1200px) {
+      flex-direction: column;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    @media screen and (width <= 768px) {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  small {
+    color: $background;
+  }
+}

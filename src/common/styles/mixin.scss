@@ -1,0 +1,32 @@
+@import './variables';
+
+@mixin ordinary-btn() {
+  cursor: pointer;
+
+  display: inline-block;
+
+  padding: 13px 30px;
+
+  font-weight: bold;
+
+  background-color: $gray-line;
+  border: 1px solid $orange;
+  border-radius: 30px;
+
+  transition: background-color 0.1s ease-in-out;
+
+  &:hover {
+    background-color: $background;
+  }
+
+  &:active {
+    background-color: $background;
+    border: 1px solid $background;
+  }
+
+  &.active {
+    color: #fff;
+    background-color: $background;
+    border: 1px solid $background;
+  }
+}

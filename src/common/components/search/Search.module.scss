@@ -1,4 +1,4 @@
-@import './../../styles/variables';
+@import '@/common/styles/variables';
 
 .search {
   position: relative;
@@ -18,19 +18,38 @@
     border: 1px solid $orange;
     border-radius: 30px;
     outline: none;
+
+    &:focus {
+      border: 1px solid $black;
+      box-shadow: 1px 1px 5px $black;
+    }
   }
 
-  .seachIcon {
+  .searchIcon {
     cursor: pointer;
 
     position: absolute;
-    top: 7px;
-    right: 25px;
+    top: 15px;
+    left: 12px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    opacity: 0.5;
 
-    height: 40px;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .clearIcon {
+    cursor: pointer;
+
+    position: absolute;
+    top: 15px;
+    right: 12px;
+
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 }

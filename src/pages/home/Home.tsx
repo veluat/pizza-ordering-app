@@ -6,7 +6,7 @@ import { PizzaSection } from '@/features/layot/pizza-section/PizzaSection'
 
 import s from './Home.module.scss'
 
-export const Home: React.FC = () => {
+export const Home: React.FC<{ searchValue: string }> = ({ searchValue }) => {
   const [items, setItems] = useState<ItemsType[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [categoryId, setCategoryId] = useState(0)
@@ -38,7 +38,7 @@ export const Home: React.FC = () => {
         <Categories onChangeCategory={i => setCategoryId(i)} value={categoryId} />
         <Sort onChangeSortType={i => setSortType(i)} value={sortType} />
       </div>
-      <PizzaSection isLoading={isLoading} items={items} />
+      <PizzaSection isLoading={isLoading} items={items} searchValue={searchValue} />
       <Pagination />
     </>
   )

@@ -16,7 +16,7 @@ export function App() {
     <div className={s.wrapper}>
       <Header searchValue={searchValue} setSearchValue={setSearchValue} />
       <Routes>
-        <Route element={<Home />} path={'/'} />
+        <Route element={<Home searchValue={searchValue} />} path={'/'} />
         <Route element={<Cart />} path={'cart'} />
         <Route element={<NotFound />} path={'*'} />
       </Routes>

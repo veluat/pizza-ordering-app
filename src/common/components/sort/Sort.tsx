@@ -23,7 +23,7 @@ export const Sort: React.FC<SortListType> = ({ onChangeSortType, value }) => {
   return (
     <div className={s.sort}>
       <div className={s.sort__label}>
-        <div>
+        <div className={s.sort__img}>
           <img
             alt={'arrow'}
             className={isOpen ? `${s.image} ${s.rotated}` : `${s.image}`}

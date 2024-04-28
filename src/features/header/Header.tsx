@@ -6,15 +6,12 @@ import { Search } from '@/common/components/search/Search'
 
 import s from './Header.module.scss'
 
-export const Header: React.FC<{ searchValue: string; setSearchValue: (event: string) => void }> = ({
-  searchValue,
-  setSearchValue,
-}) => {
+export const Header: React.FC = () => {
   return (
     <div className={s.header}>
       <div className={s.container}>
         <Logo />
-        <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+        <Search />
         <HeaderCartButton />
       </div>
     </div>

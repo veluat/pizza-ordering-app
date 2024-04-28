@@ -1,14 +1,14 @@
 import React from 'react'
 
+import { SearchContext } from '@/App'
 import close_icon from '@/assets/close.svg'
 import search_icon from '@/assets/search.svg'
 
 import s from './Search.module.scss'
 
-export const Search: React.FC<{ searchValue: string; setSearchValue: (event: string) => void }> = ({
-  searchValue,
-  setSearchValue,
-}) => {
+export const Search: React.FC = () => {
+  const { searchValue, setSearchValue } = React.useContext(SearchContext)
+
   return (
     <div className={s.search}>
       <input

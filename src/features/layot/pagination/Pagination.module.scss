@@ -1,0 +1,44 @@
+@import '@/common/styles/variables';
+
+.paginationWrapper {
+  li {
+    a {
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 54px;
+      height: 54px;
+      margin-right: 20px;
+
+      font-weight: bold;
+      line-height: 42px;
+      text-align: center;
+
+      background-color: $gray-line;
+      border: 1px solid $orange;
+      border-radius: 30px;
+
+      transition: background-color 0.1s ease-in-out;
+
+      &:hover {
+        color: #fff;
+        background-color: $background;
+      }
+    }
+  }
+
+  :global {
+    display: flex;
+    margin: 0 auto;
+
+    .selected {
+      a {
+        color: #fff;
+        background-color: $background;
+      }
+    }
+  }
+}

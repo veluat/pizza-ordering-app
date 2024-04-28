@@ -6,7 +6,12 @@
   .sort__label {
     display: flex;
     gap: 8px;
-    align-items: center;
+    align-items: flex-start;
+
+    .sort__img {
+      display: flex;
+      align-items: center;
+    }
 
     .image {
       transform: rotate(180deg);

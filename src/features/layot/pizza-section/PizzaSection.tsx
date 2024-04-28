@@ -9,12 +9,9 @@ import s from './PizzaSection.module.scss'
 export const PizzaSection: React.FC<{
   isLoading: boolean
   items: ItemsType[]
-  searchValue: string
-}> = ({ isLoading, items, searchValue }) => {
+}> = ({ isLoading, items }) => {
   const skeleton = [...new Array(6)].map((_, i) => <Skeleton key={i} />)
-  const pizzas = items
-    .filter(obj => obj.title.toLowerCase().includes(searchValue.toLowerCase()))
-    .map(obj => <PizzaBlock key={obj.id} {...obj} />)
+  const pizzas = items.map(obj => <PizzaBlock key={obj.id} {...obj} />)
 
   return (
     <div className={s.pizza__section}>

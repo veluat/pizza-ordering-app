@@ -1,19 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { SearchContext } from '@/App'
 import { Categories, Sort } from '@/common/components'
 import { Pagination } from '@/features/layot/pagination/Pagination'
 import { PizzaSection } from '@/features/layot/pizza-section/PizzaSection'
+import { setCategoryId } from '@/redux/filter/filterSlice'
+import { selectFilter } from '@/redux/filter/selectors'
 
 import s from './Home.module.scss'
 
 export const Home: React.FC = () => {
+  const dispatch = useDispatch()
+  const { categoryId } = useSelector(selectFilter)
+  const onChangeCategory = useCallback((idx: number) => {
+    dispatch(setCategoryId(idx))
+  }, [])
   const { searchValue } = React.useContext(SearchContext)
-
   const [items, setItems] = useState<ItemsType[]>([])
   const [currentPage, setCurrentPage] = useState(1)
   const [isLoading, setIsLoading] = useState(true)
-  const [categoryId, setCategoryId] = useState(0)
   const [sortType, setSortType] = useState<{ name: string; sortProperty: string }>({
     name: 'популярности',
     sortProperty: 'rating',
@@ -40,7 +46,7 @@ export const Home: React.FC = () => {
   return (
     <>
       <div className={s.sortFilterBlock}>
-        <Categories onChangeCategory={i => setCategoryId(i)} value={categoryId} />
+        <Categories onChangeCategory={onChangeCategory} value={categoryId} />
         <Sort onChangeSortType={i => setSortType(i)} value={sortType} />
       </div>
       <PizzaSection isLoading={isLoading} items={items} />

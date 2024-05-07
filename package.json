@@ -23,7 +23,8 @@
     "react-content-loader": "^7.0.0",
     "react-dom": "^18.2.0",
     "react-paginate": "^8.2.0",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "vercel": "^34.1.8"
   },
   "devDependencies": {
     "@it-incubator/eslint-config": "^1.0.2",

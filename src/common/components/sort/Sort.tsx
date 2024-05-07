@@ -1,22 +1,30 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import arrow from '@/assets/arrow-top.svg'
 import { idGenerator } from '@/common/utils/idGenerator'
+import { setSort } from '@/redux/filter/filterSlice'
+import { selectSort } from '@/redux/filter/selectors'
+import { SortPropertyEnum } from '@/redux/filter/types'
 
 import s from './Sort.module.scss'
 
-export const Sort: React.FC<SortListType> = ({ onChangeSortType, value }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-  const sortList = [
-    { name: 'популярности', sortProperty: 'rating' },
-    { name: 'цене (сначала дешевле)', sortProperty: '-price' },
-    { name: 'цене (сначала дороже)', sortProperty: 'price' },
-    { name: 'алфавиту (от А до Я)', sortProperty: '-title' },
-    { name: 'алфавиту (от Я до А)', sortProperty: 'title' },
-  ]
+const sortList: SortItem[] = [
+  { name: 'популярности', sortProperty: SortPropertyEnum.RATING_DESC },
+  { name: 'цене (сначала дешевле)', sortProperty: SortPropertyEnum.PRICE_ASC },
+  { name: 'цене (сначала дороже)', sortProperty: SortPropertyEnum.PRICE_DESC },
+  { name: 'алфавиту (от А до Я)', sortProperty: SortPropertyEnum.TITLE_ASC },
+  { name: 'алфавиту (от Я до А)', sortProperty: SortPropertyEnum.TITLE_DESC },
+]
 
-  const listItemHandler = (obj: { name: string; sortProperty: string }) => {
-    onChangeSortType(obj)
+export const Sort: React.FC = () => {
+  const dispatch = useDispatch()
+  const sort = useSelector(selectSort)
+
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+
+  const listItemHandler = (obj: SortItem) => {
+    dispatch(setSort(obj))
     setIsOpen(false)
   }
 
@@ -33,14 +41,14 @@ export const Sort: React.FC<SortListType> = ({ onChangeSortType, value }) => {
           />
           <b>Сортировка по:</b>
         </div>
-        <span onClick={() => setIsOpen(!isOpen)}>{value.name}</span>
+        <span onClick={() => setIsOpen(!isOpen)}>{sort.name}</span>
       </div>
       {isOpen && (
         <div className={s.sort__popup}>
           <ul>
             {sortList.map(obj => (
               <li
-                className={value.sortProperty === obj.sortProperty ? `${s.active}` : ''}
+                className={sort.sortProperty === obj.sortProperty ? `${s.active}` : ''}
                 key={idGenerator()}
                 onClick={() => listItemHandler(obj)}
               >
@@ -53,7 +61,8 @@ export const Sort: React.FC<SortListType> = ({ onChangeSortType, value }) => {
     </div>
   )
 }
-export type SortListType = {
-  onChangeSortType: (i: { name: string; sortProperty: string }) => void
-  value: { name: string; sortProperty: string }
+
+type SortItem = {
+  name: string
+  sortProperty: SortPropertyEnum
 }

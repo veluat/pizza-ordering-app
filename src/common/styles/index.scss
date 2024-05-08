@@ -16,6 +16,10 @@ html {
 }
 
 body {
+  overflow-x: hidden;
+
+  margin: 0 auto;
+
   background-color: $background;
   background-image: url('./../../assets/converted.svg');
   background-repeat: space;

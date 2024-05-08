@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { SearchContext } from '@/App'
-import { Categories, Sort } from '@/common/components'
+import { Categories, Sort, list } from '@/common/components'
 import { Pagination } from '@/features/layot/pagination/Pagination'
 import { PizzaSection } from '@/features/layot/pizza-section/PizzaSection'
-import { setCategoryId, setCurrentPage } from '@/redux/filter/filterSlice'
+import { setCategoryId, setCurrentPage, setFilters } from '@/redux/filter/filterSlice'
 import { selectFilter } from '@/redux/filter/selectors'
 import axios from 'axios'
 import qs from 'qs'
@@ -16,19 +16,23 @@ import s from './Home.module.scss'
 export const Home: React.FC = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { categoryId, currentPage, sort } = useSelector(selectFilter)
+  const isMounted = React.useRef(false)
+  const isSearch = React.useRef(false)
 
-  const onChangeCategory = useCallback((idx: number) => {
-    dispatch(setCategoryId(idx))
-  }, [])
-  const onChangePage = (page: number) => {
-    dispatch(setCurrentPage(page))
-  }
+  const { categoryId, currentPage, sort } = useSelector(selectFilter)
   const { searchValue } = React.useContext(SearchContext)
   const [items, setItems] = useState<ItemsType[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
+  const onChangeCategory = useCallback((idx: number) => {
+    dispatch(setCategoryId(idx))
+  }, [])
+
+  const onChangePage = (page: number) => {
+    dispatch(setCurrentPage(page))
+  }
+
+  const fetchPizzas = () => {
     setIsLoading(true)
     const sortBy = sort.sortProperty.replace('-', '')
     const order = sort.sortProperty.includes('-') ? 'asc' : 'desc'
@@ -43,25 +47,52 @@ export const Home: React.FC = () => {
         setItems(res.data)
         setIsLoading(false)
       })
+  }
 
-    window.scroll(0, 0)
-  }, [categoryId, sort.sortProperty, searchValue, currentPage])
-
+  // Если был первый рендер и изменили параментры
   useEffect(() => {
-    const queryString = qs.stringify({
-      categoryId,
-      currentPage,
-      sortProperty: sort.sortProperty,
-    })
+    if (isMounted.current) {
+      const queryString = qs.stringify({
+        categoryId,
+        currentPage,
+        sortProperty: sort.sortProperty,
+      })
 
-    navigate(`/?${queryString}`)
+      navigate(`/?${queryString}`)
+    }
+    isMounted.current = true
   }, [categoryId, sort.sortProperty, currentPage])
+
+  // Передаются URI параметры, если уже был первый рендер, и сохраняется в редаксе
+  useEffect(() => {
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1))
+      const sort = list.find(obj => obj.sortProperty === params.sortProperty)
+
+      dispatch(
+        setFilters({
+          ...params,
+          sort,
+        })
+      )
+      isSearch.current = true
+    }
+  }, [])
+
+  // Если был первый рендер, то запросить пиццы
+  useEffect(() => {
+    window.scroll(0, 0)
+    if (!isSearch.current) {
+      fetchPizzas()
+    }
+    isSearch.current = false
+  }, [categoryId, sort.sortProperty, searchValue, currentPage])
 
   return (
     <>
       <div className={s.sortFilterBlock}>
         <Categories onChangeCategory={onChangeCategory} value={categoryId} />
-        <Sort />
+        <Sort value={sort} />
       </div>
       <PizzaSection isLoading={isLoading} items={items} />
       <div className={s.paginationBlock}>
@@ -70,6 +101,7 @@ export const Home: React.FC = () => {
     </>
   )
 }
+
 export type ItemsType = {
   category: number
   id: number

@@ -6,7 +6,7 @@ export enum SortPropertyEnum {
   TITLE_DESC = 'title',
 }
 
-export type Sort = {
+export type SortType = {
   name: string
   sortProperty: SortPropertyEnum
 }
@@ -15,5 +15,5 @@ export interface FilterSliceState {
   categoryId: number
   currentPage: number
   searchValue: string
-  sort: Sort
+  sort: SortType
 }

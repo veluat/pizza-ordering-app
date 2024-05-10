@@ -11,7 +11,6 @@ import { CartItem } from '@/redux/cart/types'
 import s from './PizzaBlock.module.scss'
 
 type PizzaBlockPropsType = {
-  category: number
   id: string
   imageUrl: string
   price: number

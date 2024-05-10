@@ -1,20 +1,12 @@
 @import '@/common/styles/variables';
+@import '@/common/styles/mixin';
 
 .header__cart {
-  cursor: pointer;
-
-  position: relative;
+  @include primary-btn;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  width: 100%;
-  max-width: 200px;
-  padding: 13px 20px;
-
-  background-color: $black;
-  border-radius: 30px;
 
   &::before {
     content: '';

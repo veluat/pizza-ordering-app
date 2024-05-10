@@ -5,14 +5,18 @@ import { Icon } from '@/common/components/icon/Icon'
 
 import s from './HeaderCartButton.module.scss'
 
-export const HeaderCartButton: React.FC = () => {
+export const HeaderCartButton: React.FC<HeaderCartButtonType> = ({ totalCount, totalPrice }) => {
   return (
     <Link className={s.header__cart} to={'/cart'}>
-      <span>5500 ₽</span>
+      <span>{totalPrice} ₽</span>
       <div className={s.button__cart}>
         <Icon fill={'none'} height={'18'} sprId={'cart'} viewBox={'0 0 18 18'} width={'18'} />
-        <span>4</span>
+        <span>{totalCount}</span>
       </div>
     </Link>
   )
+}
+type HeaderCartButtonType = {
+  totalCount: number
+  totalPrice: number
 }

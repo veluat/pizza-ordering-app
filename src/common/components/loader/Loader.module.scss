@@ -1,0 +1,51 @@
+@import '@/common/styles/variables';
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(0.75);
+    opacity: 0.25;
+  }
+}
+
+.spinnerBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 300px;
+  height: 100px;
+  margin-top: 100px;
+
+  background-color: transparent;
+
+  .pulseContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 120px;
+
+    div {
+      width: 20px;
+      height: 20px;
+      background-color: $black;
+      border-radius: 50%;
+    }
+
+    .pulseBubble1 {
+      animation: pulse 0.4s ease 0s infinite alternate;
+    }
+
+    .pulseBubble2 {
+      animation: pulse 0.4s ease 0.2s infinite alternate;
+    }
+
+    .pulseBubble3 {
+      animation: pulse 0.4s ease 0.4s infinite alternate;
+    }
+  }
+}

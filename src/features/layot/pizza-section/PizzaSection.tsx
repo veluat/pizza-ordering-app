@@ -16,16 +16,14 @@ export const PizzaSection: React.FC<{
     <div className={s.pizza__section}>
       <h2 className={s.content__title}>Все пиццы</h2>
       <div className={s.content__items}>
-        {status === 'loading' ? (
-          skeleton
-        ) : status === 'error' ? (
+        {status === 'loading' && skeleton}
+        {status === 'error' && (
           <div className={s.content__error}>
             <h2>Произошла ошибка 😕</h2>
             <p>Попробуйте повторить попытку позже.</p>
           </div>
-        ) : (
-          pizzas
         )}
+        {status === 'completed' && pizzas}
       </div>
     </div>
   )

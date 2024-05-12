@@ -1,6 +1,8 @@
 import React from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
+import { ErrorMessage } from '@/common/components/error-message/ErrorMessage'
+import { Loader } from '@/common/components/loader/Loader'
 import { ReturnBack } from '@/common/components/return-back/ReturnBack'
 import axios from 'axios'
 
@@ -14,7 +16,6 @@ export const FullPizza: React.FC = () => {
   }>()
 
   const { id } = useParams()
-  const navigate = useNavigate()
 
   React.useEffect(() => {
     async function fetchPizza() {
@@ -23,8 +24,7 @@ export const FullPizza: React.FC = () => {
 
         setPizza(data)
       } catch (error) {
-        alert('Ошибка при получении пиццы!')
-        navigate('/')
+        console.log(error)
       }
     }
 
@@ -32,7 +32,13 @@ export const FullPizza: React.FC = () => {
   }, [])
 
   if (!pizza) {
-    return <>Загрузка...</>
+    return (
+      <div className={s.errorBlock}>
+        <Loader />
+        <ErrorMessage />
+        <ReturnBack />
+      </div>
+    )
   }
 
   return (

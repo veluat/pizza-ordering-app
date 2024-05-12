@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { PizzaBlock } from '@/common/components'
+import { ErrorMessage } from '@/common/components/error-message/ErrorMessage'
 import { Skeleton } from '@/common/components/skeleton/Skeleton'
 
 import s from './PizzaSection.module.scss'
@@ -17,12 +18,7 @@ export const PizzaSection: React.FC<{
       <h2 className={s.content__title}>Все пиццы</h2>
       <div className={s.content__items}>
         {status === 'loading' && skeleton}
-        {status === 'error' && (
-          <div className={s.content__error}>
-            <h2>Произошла ошибка 😕</h2>
-            <p>Попробуйте повторить попытку позже.</p>
-          </div>
-        )}
+        {status === 'error' && <ErrorMessage />}
         {status === 'completed' && pizzas}
       </div>
     </div>

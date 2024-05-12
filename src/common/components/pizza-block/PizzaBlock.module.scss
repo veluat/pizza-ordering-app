@@ -17,13 +17,48 @@
     2px 2px 15px $gray-line,
     -2px -2px 15px $gray-line;
 
-  .pizzaBlock__image {
-    width: 260px;
-  }
+  .pizza__block__link {
+    position: relative;
 
-  .pizzaBlock__title {
-    font-size: 20px;
-    font-weight: 900;
+    &::after {
+      content: 'Смотреть подробнее';
+
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 200px;
+      height: 30px;
+      margin: 0;
+      padding: 0.5em 0.5em 0.25em;
+
+      font-weight: bold;
+      color: #000;
+      vertical-align: middle;
+
+      opacity: 0;
+      background: rgb(243 210 241 / 80%);
+      border-radius: 5px;
+      box-shadow:
+        2px 2px 5px rgb(0 0 0 / 50%),
+        -2px -2px 5px rgb(0 0 0 / 50%);
+    }
+
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    .pizzaBlock__image {
+      width: 260px;
+    }
+
+    .pizzaBlock__title {
+      font-size: 20px;
+      font-weight: 900;
+    }
   }
 
   .pizzaBlock__selector {
@@ -128,17 +163,17 @@
         border: 2px solid $gray-line;
       }
     }
-  }
 
-  @media (width <= 1090px) {
-    margin-bottom: 35px;
-  }
+    @media (width <= 1090px) {
+      margin-bottom: 35px;
+    }
 
-  @media (width <= 768px) {
-    &:not(:last-of-type) {
-      margin-bottom: 25px;
-      padding-bottom: 45px;
-      border-bottom: 1px solid #efefef;
+    @media (width <= 768px) {
+      &:not(:last-of-type) {
+        margin-bottom: 25px;
+        padding-bottom: 45px;
+        border-bottom: 1px solid #efefef;
+      }
     }
   }
 }

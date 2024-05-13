@@ -1,7 +1,7 @@
 import React from 'react'
 
 import img from '@/assets/empty-cart.png'
-import { ReturnBack } from '@/common/components/return-back/ReturnBack'
+import { ReturnButton } from '@/common/components/return-button/ReturnButton'
 
 import s from './CartEmpty.module.scss'
 
@@ -19,7 +19,7 @@ export const CartEmpty: React.FC = () => {
           Для того, чтобы сделать выбор, вернитесь, пожалуйста, на главную страницу.
         </p>
         <div>
-          <ReturnBack />
+          <ReturnButton />
         </div>
       </div>
     </div>

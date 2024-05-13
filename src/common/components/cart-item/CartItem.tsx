@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import close_icon from '@/assets/close.svg'
 import { IncDecButtons } from '@/common/components/IncDecButtons/IncDecButtons'
+import { Modal } from '@/common/components/modal/Modal'
 import { addItem, minusItem, removeItem } from '@/redux/cart/CartSlice'
 
 import s from './CartItem.module.scss'
@@ -27,6 +28,7 @@ export const CartItem: React.FC<CartItemProps> = ({
   type,
 }) => {
   const dispatch = useDispatch()
+  const [isModalVisible, setIsModalVisible] = useState(false)
 
   const onClickPlus = () => {
     dispatch(
@@ -37,13 +39,21 @@ export const CartItem: React.FC<CartItemProps> = ({
   }
 
   const onClickMinus = () => {
+    if (count === 1) {
+      dispatch(removeItem(id))
+    }
     dispatch(minusItem(id))
   }
 
   const onClickRemove = () => {
-    if (window.confirm('Ты действительно хочешь удалить товар?')) {
-      dispatch(removeItem(id))
-    }
+    setIsModalVisible(true)
+  }
+  const closeModal = () => {
+    setIsModalVisible(false)
+  }
+  const confirmRemoveItem = () => {
+    dispatch(removeItem(id))
+    setIsModalVisible(false)
   }
 
   return (
@@ -64,6 +74,13 @@ export const CartItem: React.FC<CartItemProps> = ({
       <div className={s.cart__itemRemove} onClick={onClickRemove}>
         <img alt={'close'} className={s.clearIcon} height={'20'} src={close_icon} width={'20'} />
       </div>
+      <Modal
+        closeModal={closeModal}
+        confirmAction={confirmRemoveItem}
+        isVisible={isModalVisible}
+        itemId={id}
+        question={'Удалить товар?'}
+      />
     </div>
   )
 }

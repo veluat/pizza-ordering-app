@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 
 import { ErrorMessage } from '@/common/components/error-message/ErrorMessage'
 import { Loader } from '@/common/components/loader/Loader'
-import { ReturnBack } from '@/common/components/return-back/ReturnBack'
+import { ReturnButton } from '@/common/components/return-button/ReturnButton'
 import axios from 'axios'
 
 import s from './FullPizza.module.scss'
@@ -48,7 +48,7 @@ export const FullPizza: React.FC = () => {
     return (
       <div className={s.errorBlock}>
         <ErrorMessage />
-        <ReturnBack />
+        <ReturnButton />
       </div>
     )
   }
@@ -61,7 +61,7 @@ export const FullPizza: React.FC = () => {
         <h2>Состав:</h2>
         <h3>{pizza?.description}</h3>
       </div>
-      <ReturnBack />
+      <ReturnButton />
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ReturnBack } from '@/common/components/return-back/ReturnBack'
+import { ReturnButton } from '@/common/components/return-button/ReturnButton'
 
 import s from './NotFound.module.scss'
 
@@ -15,7 +15,7 @@ export const NotFound: React.FC = () => {
         </p>
       </div>
       <div className={s.returnBlock}>
-        <ReturnBack />
+        <ReturnButton />
       </div>
     </>
   )

@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux'
 
 import closeImg from '@/assets/close.svg'
 import { Icon } from '@/common/components/icon/Icon'
-import { ReturnBack } from '@/common/components/return-back/ReturnBack'
-import { clearItems } from '@/redux/cart/CartSlice'
+import { ReturnButton } from '@/common/components/return-button/ReturnButton'
+import { clearItems, removeItem } from '@/redux/cart/CartSlice'
 
 import s from './Modal.module.scss'
 
@@ -12,12 +12,17 @@ export const Modal: React.FC<{
   closeModal: () => void
   confirmAction: () => void
   isVisible: boolean
+  itemId?: string
   question: string
-}> = ({ closeModal, confirmAction, isVisible, question }) => {
+}> = ({ closeModal, confirmAction, isVisible, itemId, question }) => {
   const dispatch = useDispatch()
 
   const removeHandler = () => {
-    dispatch(clearItems())
+    if (itemId) {
+      dispatch(removeItem(itemId))
+    } else {
+      dispatch(clearItems())
+    }
     confirmAction()
   }
 
@@ -37,7 +42,7 @@ export const Modal: React.FC<{
         </div>
         <div className={s.modalQuestion}>{question}</div>
         <div className={s.modalBtnBlock}>
-          <ReturnBack />
+          <ReturnButton />
           <div className={s.remove} onClick={removeHandler}>
             <Icon
               fill={'white'}

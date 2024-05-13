@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 
 import { Icon } from '@/common/components/icon/Icon'
 
-import s from './ReturnBack.module.scss'
+import s from './ReturnButton.module.scss'
 
-export const ReturnBack: React.FC = () => {
+export const ReturnButton: React.FC = () => {
   return (
     <Link
       className={s.returnBack}

@@ -5,7 +5,7 @@ import { CartEmpty } from '@/common/components/cart-empty/CartEmpty'
 import { CartItem } from '@/common/components/cart-item/CartItem'
 import { Icon } from '@/common/components/icon/Icon'
 import { Modal } from '@/common/components/modal/Modal'
-import { ReturnBack } from '@/common/components/return-back/ReturnBack'
+import { ReturnButton } from '@/common/components/return-button/ReturnButton'
 import { clearItems } from '@/redux/cart/CartSlice'
 import { selectCart } from '@/redux/cart/selectors'
 
@@ -76,7 +76,7 @@ export const Cart: React.FC = () => {
           </span>
         </div>
         <div className={s.cartButtons}>
-          <ReturnBack />
+          <ReturnButton />
           <div className={s.paid}>
             <span>Оплатить сейчас</span>
           </div>

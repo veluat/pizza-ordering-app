@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { IncDecButtons } from '@/common/components/button/IncDecButtons'
+import { IncDecButtons } from '@/common/components/IncDecButtons/IncDecButtons'
 import { idGenerator } from '@/common/utils/idGenerator'
 import { addItem, minusItem, removeItem } from '@/redux/cart/CartSlice'
 import { selectCartItemById } from '@/redux/cart/selectors'

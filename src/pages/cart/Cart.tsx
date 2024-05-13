@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { CartEmpty } from '@/common/components/cart-empty/CartEmpty'
 import { CartItem } from '@/common/components/cart-item/CartItem'
 import { Icon } from '@/common/components/icon/Icon'
+import { Modal } from '@/common/components/modal/Modal'
 import { ReturnBack } from '@/common/components/return-back/ReturnBack'
 import { clearItems } from '@/redux/cart/CartSlice'
 import { selectCart } from '@/redux/cart/selectors'
@@ -11,15 +12,23 @@ import { selectCart } from '@/redux/cart/selectors'
 import s from './Cart.module.scss'
 
 export const Cart: React.FC = () => {
-  const dispatch = useDispatch()
   const { items, totalPrice } = useSelector(selectCart)
+  const [isModalVisible, setIsModalVisible] = useState(false)
+  const dispatch = useDispatch()
 
   const totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0)
 
   const onClickClear = () => {
-    if (window.confirm('Очистить корзину?')) {
-      dispatch(clearItems())
-    }
+    setIsModalVisible(true)
+  }
+
+  const closeModal = () => {
+    setIsModalVisible(false)
+  }
+
+  const confirmClearCart = () => {
+    dispatch(clearItems())
+    setIsModalVisible(false)
   }
 
   if (!totalPrice) {
@@ -40,7 +49,13 @@ export const Cart: React.FC = () => {
           Корзина
         </h2>
         <div className={s.cart__clear} onClick={onClickClear}>
-          <Icon fill={'none'} height={'20'} sprId={'trash'} viewBox={'0 0 20 20'} width={'20'} />
+          <Icon
+            fill={'#b6b6b6'}
+            height={'20'}
+            sprId={'trash'}
+            viewBox={'0 0 512 512'}
+            width={'26'}
+          />
           Очистить корзину
         </div>
       </div>
@@ -67,6 +82,12 @@ export const Cart: React.FC = () => {
           </div>
         </div>
       </div>
+      <Modal
+        closeModal={closeModal}
+        confirmAction={confirmClearCart}
+        isVisible={isModalVisible}
+        question={'Очистить корзину?'}
+      />
     </div>
   )
 }

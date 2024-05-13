@@ -21,7 +21,7 @@ export const ReturnBack: React.FC = () => {
         viewBox={'0 0 64 64'}
         width={'21'}
       />
-      <span>Вернуться назад</span>
+      <span>Назад</span>
     </Link>
   )
 }

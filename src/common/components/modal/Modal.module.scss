@@ -1,0 +1,84 @@
+@import '@/common/styles/variables';
+@import '@/common/styles/mixin';
+
+@keyframes show-modal {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes show-overlay {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.modalCover {
+  position: fixed;
+  z-index: 2000;
+  inset: 0;
+
+  background-color: rgb(0 0 0 / 70%);
+
+  animation: show-overlay 0.3s ease forwards;
+}
+
+.modalContainer {
+  position: fixed;
+  z-index: 2001;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+
+  width: 500px;
+  max-height: calc(100vh - 160px);
+  padding: 20px 34px 34px;
+
+  background-color: #f5f5f5;
+  border-radius: 12px;
+
+  animation: show-modal 0.3s ease forwards;
+
+  .modalTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .modalClose {
+      cursor: pointer;
+      width: 25px;
+    }
+  }
+
+  .modalQuestion {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .modalBtnBlock {
+    display: flex;
+    gap: 100px;
+
+    .remove {
+      @include primary-btn;
+
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

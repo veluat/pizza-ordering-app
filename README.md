@@ -1,4 +1,4 @@
-<h1><img src="https://github.com/veluat/pizza-ordering-app/blob/main/src/assets/logo.png?raw=true" alt="pizza-app" width="35"/> Интернет-магазин по заказу пиццы PIZZA-ORDERING.</h1> 
+<h1><img src="https://github.com/veluat/pizza-ordering-app/blob/main/src/assets/logo.png?raw=true" alt="pizza-app" width="35"/> Интернет-магазин по заказу пиццы</h1> 
 <img src="https://github.com/veluat/pizza-ordering-app/blob/main/src/assets/read-me/pizza-1.png?raw=true" alt="pizza-app" width="1000"/>
 
 ___

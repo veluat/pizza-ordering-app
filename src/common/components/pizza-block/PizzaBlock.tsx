@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { IncDecButtons } from '@/common/components/IncDecButtons/IncDecButtons'
 import { idGenerator } from '@/common/utils/idGenerator'
-import { addItem, minusItem, removeItem } from '@/redux/cart/CartSlice'
+import { addItem, minusItem, removeItem } from '@/redux/cart/cartSlice'
 import { selectCartItemById } from '@/redux/cart/selectors'
 import { CartItem } from '@/redux/cart/types'
 

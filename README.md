@@ -23,6 +23,7 @@ ___
   - React Hooks
   - React Content Loader (skeleton)
   - React Pagination
+  - React Lazy-loading
 - TypeScript
 - Redux Toolkit
 - Axios

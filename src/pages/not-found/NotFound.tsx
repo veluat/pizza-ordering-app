@@ -4,7 +4,7 @@ import { ReturnButton } from '@/common/components/return-button/ReturnButton'
 
 import s from './NotFound.module.scss'
 
-export const NotFound: React.FC = () => {
+const NotFound: React.FC = () => {
   return (
     <>
       <div className={s.notFoundBlock}>
@@ -20,3 +20,5 @@ export const NotFound: React.FC = () => {
     </>
   )
 }
+
+export default NotFound

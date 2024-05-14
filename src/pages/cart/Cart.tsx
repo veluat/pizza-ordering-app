@@ -6,12 +6,12 @@ import { CartItem } from '@/common/components/cart-item/CartItem'
 import { Icon } from '@/common/components/icon/Icon'
 import { Modal } from '@/common/components/modal/Modal'
 import { ReturnButton } from '@/common/components/return-button/ReturnButton'
-import { clearItems } from '@/redux/cart/CartSlice'
+import { clearItems } from '@/redux/cart/cartSlice'
 import { selectCart } from '@/redux/cart/selectors'
 
 import s from './Cart.module.scss'
 
-export const Cart: React.FC = () => {
+const Cart: React.FC = () => {
   const { items, totalPrice } = useSelector(selectCart)
   const [isModalVisible, setIsModalVisible] = useState(false)
   const dispatch = useDispatch()
@@ -91,3 +91,5 @@ export const Cart: React.FC = () => {
     </div>
   )
 }
+
+export default Cart

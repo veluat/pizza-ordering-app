@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import { Categories, Sort } from '@/common/components'
+import { Categories, SortPopup } from '@/common/components'
 import { Pagination } from '@/features/layot/pagination/Pagination'
 import { PizzaSection } from '@/features/layot/pizza-section/PizzaSection'
 import { setCategoryId, setCurrentPage } from '@/redux/filter/filterSlice'
@@ -18,19 +18,13 @@ export const Home: React.FC = () => {
   const { items, status } = useSelector(selectPizzaData)
   const { categoryId, currentPage, searchValue, sort } = useSelector(selectFilter)
 
-  const onChangeCategory = useCallback(
-    (idx: number) => {
-      dispatch(setCategoryId(idx))
-    },
-    [dispatch]
-  )
+  const onChangeCategory = useCallback((idx: number) => {
+    dispatch(setCategoryId(idx))
+  }, [])
 
-  const onChangePage = useCallback(
-    (page: number) => {
-      dispatch(setCurrentPage(page))
-    },
-    [dispatch]
-  )
+  const onChangePage = useCallback((page: number) => {
+    dispatch(setCurrentPage(page))
+  }, [])
 
   const getPizzas = async () => {
     const sortBy = sort.sortProperty.replace('-', '')
@@ -59,7 +53,7 @@ export const Home: React.FC = () => {
     <>
       <div className={s.sortFilterBlock}>
         <Categories onChangeCategory={onChangeCategory} value={categoryId} />
-        <Sort value={sort} />
+        <SortPopup value={sort} />
       </div>
       <PizzaSection items={items} status={status} />
       <div className={s.paginationBlock}>

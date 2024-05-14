@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import close_icon from '@/assets/close.svg'
 import { IncDecButtons } from '@/common/components/IncDecButtons/IncDecButtons'
 import { Modal } from '@/common/components/modal/Modal'
-import { addItem, minusItem, removeItem } from '@/redux/cart/CartSlice'
+import { addItem, minusItem, removeItem } from '@/redux/cart/cartSlice'
 
 import s from './CartItem.module.scss'
 

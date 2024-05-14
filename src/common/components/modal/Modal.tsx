@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import closeImg from '@/assets/close.svg'
 import { Icon } from '@/common/components/icon/Icon'
 import { ReturnButton } from '@/common/components/return-button/ReturnButton'
-import { clearItems, removeItem } from '@/redux/cart/CartSlice'
+import { clearItems, removeItem } from '@/redux/cart/cartSlice'
 
 import s from './Modal.module.scss'
 

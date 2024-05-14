@@ -8,7 +8,7 @@ import axios from 'axios'
 
 import s from './FullPizza.module.scss'
 
-export const FullPizza: React.FC = () => {
+const FullPizza: React.FC = () => {
   const [pizza, setPizza] = useState<{
     description: string
     imageUrl: string
@@ -65,3 +65,5 @@ export const FullPizza: React.FC = () => {
     </div>
   )
 }
+
+export default FullPizza

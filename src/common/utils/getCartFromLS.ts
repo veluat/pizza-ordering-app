@@ -1,4 +1,4 @@
-import { calcTotalPrice } from '@/common/hooks/calcTotalPrice'
+import { calcTotalPrice } from '@/common/utils/calcTotalPrice'
 import { CartItem } from '@/redux/cart/types'
 
 export const getCartFromLS = () => {

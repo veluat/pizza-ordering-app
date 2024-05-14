@@ -1,6 +1,7 @@
 import React from 'react'
 import ContentLoader from 'react-content-loader'
 
+// @ts-ignore
 export const Skeleton: React.FC = () => (
   <ContentLoader
     backgroundColor={'#f3f3f3'}

@@ -1,5 +1,5 @@
-import { calcTotalPrice } from '@/common/hooks/calcTotalPrice'
-import { getCartFromLS } from '@/common/hooks/getCartFromLS'
+import { calcTotalPrice } from '@/common/utils/calcTotalPrice'
+import { getCartFromLS } from '@/common/utils/getCartFromLS'
 import { CartItem, CartSliceState } from '@/redux/cart/types'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 

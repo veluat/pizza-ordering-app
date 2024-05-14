@@ -49,6 +49,9 @@
 
   background-color: #f5f5f5;
   border-radius: 12px;
+  box-shadow:
+    2px 2px 8px $black inset,
+    -2px -2px 8px $black inset;
 
   animation: show-modal 0.3s ease forwards;
 

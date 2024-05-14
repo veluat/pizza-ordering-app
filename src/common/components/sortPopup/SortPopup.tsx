@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { memo, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 import arrow from '@/assets/arrow-top.svg'
 import { idGenerator } from '@/common/utils/idGenerator'
 import { setSort } from '@/redux/filter/filterSlice'
-import { selectSort } from '@/redux/filter/selectors'
 import { SortPropertyEnum, SortType } from '@/redux/filter/types'
 
-import s from './Sort.module.scss'
+import s from './SortPopup.module.scss'
 
 export const list: SortItem[] = [
   { name: 'популярности', sortProperty: SortPropertyEnum.RATING_DESC },
@@ -17,10 +16,9 @@ export const list: SortItem[] = [
   { name: 'алфавиту (от Я до А)', sortProperty: SortPropertyEnum.TITLE_DESC },
 ]
 
-export const Sort: React.FC<SortPopupProps> = React.memo(({ value }) => {
+export const SortPopup: React.FC<SortPopupProps> = memo(({ value }) => {
   const dispatch = useDispatch()
   const sortRef = React.useRef<HTMLDivElement>(null)
-  const sort = useSelector(selectSort)
 
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
@@ -63,7 +61,7 @@ export const Sort: React.FC<SortPopupProps> = React.memo(({ value }) => {
           <ul>
             {list.map(obj => (
               <li
-                className={sort.sortProperty === obj.sortProperty ? `${s.active}` : ''}
+                className={value.sortProperty === obj.sortProperty ? `${s.active}` : ''}
                 key={idGenerator()}
                 onClick={() => listItemHandler(obj)}
               >

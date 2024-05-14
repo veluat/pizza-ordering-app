@@ -13,29 +13,41 @@ export const Search: React.FC = () => {
   const [value, setValue] = React.useState<string>('')
   const inputRef = React.useRef<HTMLInputElement>(null)
 
-  const onClickClear = () => {
+  const onClickClear = useCallback(() => {
     dispatch(setSearchValue(''))
     setValue('')
     inputRef.current?.focus()
-  }
+  }, [dispatch, inputRef])
 
   const updateSearchValue = useCallback(
     debounce((str: string) => {
       dispatch(setSearchValue(str))
     }, 150),
-    []
+    [value]
   )
-
-  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value)
-    updateSearchValue(event.target.value)
-  }
+  const onKeyDownInput = useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === 'Enter') {
+        event.preventDefault()
+        updateSearchValue(value)
+      }
+    },
+    [updateSearchValue, value]
+  )
+  const onChangeInput = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValue(event.target.value)
+      updateSearchValue(event.target.value)
+    },
+    [updateSearchValue]
+  )
 
   return (
     <div className={s.search}>
       <input
         className={s.searchInput}
         onChange={onChangeInput}
+        onKeyDown={onKeyDownInput}
         placeholder={'Поиск пиццы...'}
         ref={inputRef}
         type={'text'}

@@ -58,21 +58,25 @@ export const CartItem: React.FC<CartItemProps> = ({
 
   return (
     <div className={s.cart__item}>
-      <div className={s.cart__itemImg}>
-        <img alt={'Pizza'} className={s.pizzaBlock__image} src={imageUrl} />
+      <div className={s.cart__blockInfo}>
+        <div className={s.cart__itemImg}>
+          <img alt={'Pizza'} className={s.pizzaBlock__image} src={imageUrl} />
+        </div>
+        <div className={s.cart__itemInfo}>
+          <h3>{title}</h3>
+          <p>
+            {type}, {size} см.
+          </p>
+        </div>
       </div>
-      <div className={s.cart__itemInfo}>
-        <h3>{title}</h3>
-        <p>
-          {type}, {size} см.
-        </p>
-      </div>
-      <IncDecButtons count={count} onClickMinus={onClickMinus} onClickPlus={onClickPlus} />
-      <div className={s.cart__itemPrice}>
-        <b>{price * count} ₽</b>
-      </div>
-      <div className={s.cart__itemRemove} onClick={onClickRemove}>
-        <img alt={'close'} className={s.clearIcon} height={'20'} src={close_icon} width={'20'} />
+      <div className={s.cart__blockChoice}>
+        <IncDecButtons count={count} onClickMinus={onClickMinus} onClickPlus={onClickPlus} />
+        <div className={s.cart__itemPrice}>
+          <b>{price * count} ₽</b>
+        </div>
+        <div className={s.cart__itemRemove} onClick={onClickRemove}>
+          <img alt={'close'} className={s.clearIcon} height={'20'} src={close_icon} width={'20'} />
+        </div>
       </div>
       <Modal
         closeModal={closeModal}

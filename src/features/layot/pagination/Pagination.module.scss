@@ -27,6 +27,12 @@
         color: #fff;
         background-color: $background;
       }
+
+      @media (width <= 425px) {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+      }
     }
   }
 

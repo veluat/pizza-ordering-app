@@ -43,7 +43,8 @@
   flex-direction: column;
   gap: 70px;
 
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   max-height: calc(100vh - 160px);
   padding: 20px 34px 34px;
 
@@ -80,6 +81,16 @@
 
       display: flex;
       gap: 5px;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      max-width: 250px;
+    }
+
+    @media (width <= 940px) {
+      flex-direction: column-reverse;
+      gap: 15px;
       align-items: center;
       justify-content: center;
     }

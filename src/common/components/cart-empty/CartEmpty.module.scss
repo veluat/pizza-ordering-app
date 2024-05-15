@@ -15,8 +15,10 @@
 
   .message {
     display: flex;
-    flex-flow: column wrap;
+    flex-direction: column;
     gap: 40px;
+    align-items: center;
+    justify-content: center;
 
     height: 100%;
     max-height: 500px;

@@ -66,19 +66,19 @@ const Cart: React.FC = () => {
       </div>
       <div className={s.cart__bottom}>
         <div className={s.cart__details}>
+          <span>Всего пицц:</span>
           <span>
-            {' '}
-            Всего пицц: <b>{totalCount} шт.</b>{' '}
+            <b>{totalCount} шт.</b>
           </span>
+          <span>Сумма заказа:</span>
           <span>
-            {' '}
-            Сумма заказа: <b>{totalPrice} ₽</b>{' '}
+            <b>{totalPrice} ₽</b>
           </span>
         </div>
         <div className={s.cartButtons}>
           <ReturnButton />
           <div className={s.paid}>
-            <span>Оплатить сейчас</span>
+            <span>Оплатить</span>
           </div>
         </div>
       </div>

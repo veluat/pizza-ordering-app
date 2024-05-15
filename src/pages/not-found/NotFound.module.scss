@@ -3,10 +3,13 @@
   flex-direction: column;
   gap: 40px;
   align-items: center;
+  justify-content: center;
 
   width: 100%;
   max-width: 1440px;
   padding: 100px;
+
+  text-align: center;
 
   span {
     font-size: 64px;

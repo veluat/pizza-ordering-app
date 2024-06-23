@@ -31,6 +31,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+div ul li:not(.init):hover,
+ul li.selected:not(.init) {
+  background: transparent;
+}
+
 a,
 span,
 p,

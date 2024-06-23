@@ -77,7 +77,7 @@ const Cart: React.FC = () => {
         </div>
         <div className={s.cartButtons}>
           <ReturnButton />
-          <div className={s.paid}>
+          <div className={s.paid} title={'Это демо-версия. Оплата невозможна'}>
             <span>Оплатить</span>
           </div>
         </div>

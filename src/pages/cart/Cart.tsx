@@ -14,6 +14,7 @@ import s from './Cart.module.scss'
 const Cart: React.FC = () => {
   const { items, totalPrice } = useSelector(selectCart)
   const [isModalVisible, setIsModalVisible] = useState(false)
+  const [showTooltip, setShowTooltip] = useState(false)
   const dispatch = useDispatch()
 
   const totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0)
@@ -29,6 +30,14 @@ const Cart: React.FC = () => {
   const confirmClearCart = () => {
     dispatch(clearItems())
     setIsModalVisible(false)
+  }
+
+  const handleMouseEnter = () => {
+    setShowTooltip(true)
+  }
+
+  const handleMouseLeave = () => {
+    setShowTooltip(false)
   }
 
   if (!totalPrice) {
@@ -77,8 +86,9 @@ const Cart: React.FC = () => {
         </div>
         <div className={s.cartButtons}>
           <ReturnButton />
-          <div className={s.paid} title={'Это демо-версия. Оплата невозможна'}>
+          <div className={s.paid} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <span>Оплатить</span>
+            {showTooltip && <div className={s.tooltip}>Оплата невозможна в демо-версии</div>}
           </div>
         </div>
       </div>

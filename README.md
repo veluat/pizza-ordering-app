@@ -3,7 +3,7 @@
 
 ___
 
-## Демо можно посмотреть [здесь](https://pizza-ordering-layout.netlify.app/)
+## :link: Демо можно посмотреть [здесь](https://pizza-ordering-layout.netlify.app/)
 
 ___
 
